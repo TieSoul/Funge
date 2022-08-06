@@ -24,7 +24,7 @@ public class Main {
                 str = new String(Files.readAllBytes(Paths.get(filename)), Charset.forName("ISO-8859-1"));
                 str = str.replaceAll("\\r\\n?", "\n");
             } catch (Exception e) {
-                System.out.println("File couldn't be opened for reading.");
+                System.err.println("File couldn't be opened for reading.");
                 return;
             }
             int dim = 2;
@@ -40,9 +40,9 @@ public class Main {
             long now = System.nanoTime();
             FungeSpace space = new FungeSpace(str, 2);
             space.runProgram();
-            System.out.println("\nProgram took " + (System.nanoTime() - now)/1000000 + "ms to construct and run.");
+            System.err.println("\nProgram took " + (System.nanoTime() - now)/1000000 + "ms to construct and run.");
         } else {
-            System.out.println("You must specify a file to run.");
+            System.err.println("You must specify a file to run.");
         }
     }
 }

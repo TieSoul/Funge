@@ -1,7 +1,5 @@
 package com.company;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -562,7 +560,7 @@ public class FungeSpace {
             int num = instr - 'A';
             if (ip.semantics[num].isEmpty()) {
                 ip.reflect();
-                System.out.println("[FungeJ] WARNING: unloaded semantic " + (char)instr + " called at " + ip.pos + ".");
+                System.err.println("[FungeJ] WARNING: unloaded semantic " + (char)instr + " called at " + ip.pos + ".");
             } else {
                 ip.semantics[num].peek().accept(ip);
             }
@@ -598,7 +596,7 @@ public class FungeSpace {
         }
         else {
             ip.reflect();
-            System.out.println("[FungeJ] WARNING: unknown instruction " + instr + " encountered at " + ip.pos +
+            System.err.println("[FungeJ] WARNING: unknown instruction " + instr + " encountered at " + ip.pos +
                     " by IP #" + ip.id + ".");
         }
     }
